@@ -3,6 +3,7 @@ import { prisma } from "../db.js";
 
 const router = Router();
 
+// GET /books - Traer todos los libros con su categoría
 router.get("/books", async (req, res, next) => {
   try {
     const books = await prisma.book.findMany({
@@ -17,9 +18,37 @@ router.get("/books", async (req, res, next) => {
   }
 });
 
+
+// GET /books/:id - Traer un libro por su ID con su categoría
+router.get("/books/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const book = await prisma.book.findUnique({
+      where: {
+        id: Number(id),
+      },
+      include: {
+        category: true,
+      },
+    });
+
+    if (!book) {
+      return res.status(404).json({
+        message: "Libro no encontrado",
+      });
+    }
+
+    res.json(book);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// POST /books - Crear un nuevo libro
 router.post("/books", async (req, res, next) => {
   try {
-    const { title, author, publishedYear, price, categorId } = req.body;   
+    const { title, author, publishedYear, price, categoryId } = req.body;   
 
     const book = await prisma.book.create({
       data: {
@@ -27,7 +56,7 @@ router.post("/books", async (req, res, next) => {
         author,
         publishedYear,
         price,
-        categorId,
+        categoryId,
       },
     });
 
@@ -37,10 +66,11 @@ router.post("/books", async (req, res, next) => {
   }
 });
 
+// PUT /books/:id - Actualizar un libro por su ID
 router.put("/books/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { title, author, publishedYear, price, categorId } = req.body;
+    const { title, author, publishedYear, price, categoryId } = req.body;
 
     const book = await prisma.book.update({
       where: {
@@ -51,7 +81,7 @@ router.put("/books/:id", async (req, res, next) => {
         author,
         publishedYear,
         price: Number(price),
-        categorId: Number(categorId),
+        categoryId: Number(categoryId),
       },
     });
 
@@ -61,6 +91,7 @@ router.put("/books/:id", async (req, res, next) => {
   }
 });
 
+// DELETE /books/:id - Eliminar un libro por su ID
 router.delete("/books/:id", async (req, res, next) => {
   try {
     const { id } = req.params;

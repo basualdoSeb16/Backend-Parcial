@@ -15,7 +15,7 @@ CREATE TABLE `book` (
     `title` VARCHAR(191) NOT NULL,
     `author` VARCHAR(191) NOT NULL,
     `publishedYear` INTEGER NOT NULL,
-    `categorId` INTEGER NOT NULL,
+    `categoryId` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -29,4 +29,4 @@ CREATE TABLE `category` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `book` ADD CONSTRAINT `book_categorId_fkey` FOREIGN KEY (`categorId`) REFERENCES `category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `book` ADD CONSTRAINT `book_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
