@@ -15,11 +15,12 @@ model user {
 
 model book {
   id            Int      @id @default(autoincrement())
-  title         String
+  title         String @unique
   author        String
-  publishedYear String
+  publishedYear Int 
   categorId     Int
   price         Float
+  quantity      Int @default(0)
   category      category @relation(fields: [categorId], references: [id])
 
   @@index([categorId], map: "book_categorId_fkey")
