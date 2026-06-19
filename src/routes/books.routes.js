@@ -28,7 +28,7 @@ const router = Router();
  * Obtiene todos los libros con su categoría asociada.
  *
  * @async
- * @param {import("express").Request} req
+ * @param {import("express").Request} req 
  * @param {import("express").Response} res
  * @param {import("express").NextFunction} next
  *
