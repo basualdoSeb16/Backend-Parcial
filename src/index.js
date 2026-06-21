@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 const app = express();
 
@@ -6,6 +7,7 @@ import bookRoutes from "./routes/books.routes.js";
 import categoryRoutes from "./routes/categories.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/api", bookRoutes);
