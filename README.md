@@ -3,6 +3,13 @@
 
 *** Biblioteca Virtual ***
 
+## Integrantes del Grupo:
+
+* Basualdo Sebastian
+* Bulacio Ignacio Tomas
+* Cordoba Bruno
+* Cordoba Brenda
+
 # Tecnologias & Middlewares usados:
 
 ## Para el Backend:
@@ -48,7 +55,13 @@ Tambien se debe crear una base de datos vacia utilizando MySQL Workbench.
 - Comprobar en consola que todo se haya descargado de manera correcta, de lo contrario se debera instalar de manera manual.
 
 - Configurar las variables de entorno:
-Si todo esta instalado de manera correcta, ahora se debe crear un archivo '.env' dentro de la carpeta raíz del repositorio local. Usando el archivo '.env.example' como referencia, se deben crear las mismas variables dentro del archivo .env recien creado pero completando los datos de las variables con los de la base de datos local del usuario (consultar host, usuario, contraseña, nombre de la base de datos en MySQL Workbench para armar la url).
+Si todo esta instalado de manera correcta, ahora se debe crear un archivo '.env' dentro de la carpeta raíz del repositorio local. Usando el archivo '.env.example' como referencia, completar los datos de las variables con los de la base de datos local del usuario (consultar host, usuario, contraseña, nombre de la base de datos en MySQL Workbench para armar la url. Crear una cadena de caracteres para la JWT_SECRET).
 
 - Comprobar datos en archivo 'db.js':
 Dentro del archivo 'db.js' se debe cambiar el valor de las variables port y host con los correspondientes a la base de datos local.
+
+## Instrucciones de ejecucion:
+
+- Se pueden realizar las peticiones http utilizando extensiones como Thunder Client, REST client, etc.
+
+- Tambien puede usar el comando: 'npx prisma studio' para acceder y manipular datos del backend.
